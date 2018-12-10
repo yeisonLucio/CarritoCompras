@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Productos list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Descripcion</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for producto in productos %}
+            <tr>
+                <td><a href="{{ path('producto_show', { 'id': producto.id }) }}">{{ producto.id }}</a></td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('producto_show', { 'id': producto.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('producto_edit', { 'id': producto.id }) }}">edit</a>
+                        </li>
+                        <li>
+                          <a href="#"> Agregar al carrito</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a href="{{ path('producto_new') }}">Create a new producto</a>
+        </li>
+
+    </ul>
+
+    <div>
+      <h1>Carrito<h1>
+    </div>
+
+    <script>
+      $(function(){
+
+      });
+      function addProducto($id, $url){
+
+
+      $.ajax({
+      type: "POST",
+      url: $url,
+      id: $id,
+      success: function(resultado){
+        if(resultado.status==1){
+
+        }else{
+
+        }
+
+        }
+      });
+
+      }
+    </script>
+  {% endblock %}

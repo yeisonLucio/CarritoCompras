@@ -1,0 +1,15 @@
+﻿
+//crear proyecto symfony
+symfony new nombreProyecto 3.4 -> remplazar por la version
+
+//crear database
+bin/console doctrine:database:create
+
+// generar una entidad
+bin/console doctrine:generate:entity
+
+// ver cambios a actualizar database
+bin/console doctrine:schema:update --dump-sql
+
+// update database
+ bin/console doctrine:schema:update --force
